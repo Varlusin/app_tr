@@ -1,0 +1,42 @@
+{% extends "mayin/base.html" %}
+{% load static %}
+{% load i18n %} 
+
+{% block title %}
+<title>{% trans 'Գրանցվել' %}</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/users/css/regist.css' %}" />
+{% endblock css %}
+
+{% block registration %}
+<button class="singin">
+  <a href="{% url 'singin' %}">
+    <p>{% trans 'Մուտք' %}</p>
+  </a>
+</button>
+{% endblock registration %}
+
+{% block maayin %}
+<div class="bd">
+  <div class="container">
+    <div class="content">
+      <form method="post" action="">
+        <div class="user-details">
+          {% csrf_token %} 
+          {% for fr in form %}
+          <div class="input-box">
+            <span class="details"> {{fr.label}} </span>
+            {{fr}}
+          </div>
+          {% endfor %}
+        </div>
+        <div class="button">
+          <input type="submit" value="Register" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock maayin %}

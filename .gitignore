@@ -1,0 +1,7 @@
+admin/
+debug_toolbar/
+img/
+db.sqlite3
+media/
+.pyc
+migrations/

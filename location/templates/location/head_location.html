@@ -1,0 +1,13 @@
+{% load i18n %}
+{% load static %}
+<search class="search">
+    <form action="" class="src-loc">
+      <input type="text" class="inp-loc" id="SrcLocHead"  placeholder="{% trans 'Ձեր հասցեն' %}" />
+    </form>
+      <button class="map-click" id = "openMap">
+        <img src="{% static "mayin/img/locetion.jpg" %}" alt="76ujytj"
+        class="img-buton" />
+        <p>{% trans 'Քարտեզ' %}</p>
+      </button>
+  </search>
+  

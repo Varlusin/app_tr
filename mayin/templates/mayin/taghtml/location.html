@@ -1,0 +1,27 @@
+{% load i18n %} 
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/mayin/css/location.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script src="{% static '/mayin/js/easy-button.js' %}" ></script>
+
+<div id = "loccont" >
+  <search class="search">
+    <form action="" class="src-loc">
+      <input type="text" class="inp-loc" id = "formadres" placeholder="{% trans 'Ձեր հասցեն' %}" />
+    </form>
+  </search>
+
+  <button class="closemap" id = "closeMap">
+    {% comment %} <img src="{% static "mayin/img/locetion.jpg" %}" alt="76ujytj" class="img-buton" /> {% endcomment %}
+      <p>{% trans 'close' %}</p>
+  </button>
+  <div id="map"></div>
+</div>
+<script src="{% static '/mayin/js/location.js' %}"></script>
+
+
+
+

@@ -1,0 +1,210 @@
+.mayin {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+.mayindisploy {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.asid {
+    flex-grow: 0;
+    max-width: 25%;
+    padding: 8px;
+    flex-basis: 25;
+    display: block;
+
+}
+
+.navmenu {
+    margin-bottom: 8px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+}
+
+.menuctg {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
+}
+
+
+
+.fotr {
+    background: blue;
+
+}
+
+
+.ctgsel {
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    width: 100%;
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    text-align: left;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    justify-content: flex-start;
+    text-decoration: none;
+    cursor: pointer;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+
+.ctghref {
+    width: 100%;
+    display: flex;
+    min-height: 26px;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-decoration: none;
+
+}
+
+.sp {
+    line-height: 0;
+    margin-right: 8px;
+}
+
+.ctglogo {
+    width: 21px;
+    height: 24px;
+}
+
+/* nw */
+
+.wrip {
+    padding-left: 8px;
+    flex-grow: 0;
+    max-width: 75%;
+    flex-basis: 75%;
+}
+
+.showbox {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding-left: 8px;
+
+}
+
+.card {
+    padding: 12px;
+    flex-grow: 0;
+    max-width: 50%;
+    flex-basis: 50%;
+    margin: 0;
+    box-sizing: border-box;
+    display: block;
+}
+
+.prdart {
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    color: #424242;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-color: #fff;
+
+}
+
+.prddiscone {
+    position: relative;
+    display: block;
+}
+
+.prdhref {
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.spetial {
+    top: 10px;
+    left: 10px;
+    color: #FFF;
+    cursor: pointer;
+    height: 22px;
+    padding: 0;
+    position: absolute;
+    font-size: 12px;
+    background: #620954;
+    align-items: center;
+    font-weight: 500;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    justify-content: center;
+}
+
+.spp {
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-bottom: 1.5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.prdimg {
+    object-fit: cover;
+    width: 100%;
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.prddisctwo {
+    padding: 16px;
+    display: block;
+}
+
+.prdname {
+    display: flex;
+    margin-bottom: 10.4px;
+    justify-content: space-between;
+}
+
+
+.review {
+    color: #424242;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+}
+
+.rewiewinline {
+    display: inline;
+}
+
+
+.workdata {
+    display: flex;
+    font-size: 13px;
+    font-weight: 400;
+    justify-content: space-between;
+
+
+}
+
+/* .worktime{
+
+} */

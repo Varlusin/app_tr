@@ -1,0 +1,107 @@
+/* header */
+.header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #f9f9fb;
+  top: 0;
+  left: auto;
+  right: 0;
+  position: sticky;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+/* logo */
+.img-logo {
+  width: 80px;
+  height: 60px;
+}
+
+.logo {
+  justify-content: space-between;
+  padding-left: 20px;
+}
+
+/* location */
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.img-buton {
+  width: 30px;
+  height: 30px;
+}
+
+.src-loc {
+  display: flex;
+  align-items: center;
+}
+
+.map-click {
+  display: flex;
+  align-items: center;
+}
+
+/* butons for header right */
+
+.basket,
+.singin,
+.registration,
+.log-out {
+  padding-right: 15px;
+}
+
+.useraction {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding-right: 20px;
+  align-items: inherit;
+}
+
+.pos-relative {
+  position: relative;
+}
+
+.leng {
+  border: 1px solid rgb(231, 30, 76);
+  display: flex;
+  padding-left: 9px;
+  padding-right: 9px;
+  text-transform: uppercase;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.lengnav {
+  color: #424242;
+  width: 100%;
+  opacity: 0;
+  z-index: 10;
+  position: absolute;
+  transition: all 0.1s ease;
+  visibility: hidden;
+  border-left: 1px solid rgb(231, 30, 76);
+  border-right: 1px solid rgb(231, 30, 76);
+  border-bottom: 1px solid rgb(231, 30, 76);
+  background-color: #fff;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* box-show koxqic kerkum e  */
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> {{title}} </title>
+</head>
+<body>
+  <div>
+
+
+    {% if userpost %}
+
+    <p>{{ userpost.post.post }}</p>
+    <p>{{ userpost.post.gnahatakan }}</p>
+
+    <p>{{ userpost.post.user__first_name }} {{ userpost.post.user__last_name }} </p>
+
+    <a href="{% url "changepost" userpost.slug user.id %}">
+      {{submit}}
+    </a>
+    {% else %}
+    <a href="{% url "addpost" slug %}">
+      {{submit}}
+    </a>
+    {% endif %}
+
+
+    {% for post in posts %}
+    <p>{{post.gnahatakan}}</p>
+    <p>{{post.post}}</p>
+    <h3>{{post.user__first_name}} {{post.user__last_name}}  </h3>
+
+
+
+    {% endfor %}
+
+
+  </div>
+</body>
+</html>

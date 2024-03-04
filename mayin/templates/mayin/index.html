@@ -1,0 +1,97 @@
+{% extends "mayin/base.html" %} 
+{% load static %} 
+{% load i18n %} 
+{% block title%}
+<title>{{ title }}</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/mayin/css/cont.css' %}" />
+{% endblock css %}
+
+
+{% block registration %}
+
+{%if user.is_authenticated %}
+<button class="log-out">
+  <a href="{% url 'log-out' %}">
+    <p>{% trans 'Դուրս գալ' %}</p>
+  </a>
+</button>
+<div class="user-name">
+  <p>{{user.first_name }}</p>
+</div>
+{% else %}
+<button class="singin">
+  <a href="{% url 'singin' %}">
+    <p>{% trans 'Մուտք' %}</p>
+  </a>
+</button>
+<button class="registration">
+  <a href="{% url 'register' %}">
+    <p>{% trans 'Գրանցվել' %}</p>
+  </a>
+</button>
+{% endif %}
+      
+{% endblock registration %}
+
+
+
+
+{% block maayin %}
+
+{% include "location/location.html" %}
+
+<div class="mayindisploy">
+    {% include "mayin/taghtml/catmen.html" %}
+
+    <article class="wrip">
+        <div class="showbox">
+            {% for kmp in grup %}
+            <div class="card">
+              <article class="prdart">
+                  <div class="prddiscone" >
+                      <a href=" {%url 'Companyvews'  kmp.slug kmp.id %} " class="prdhref">
+                          <div class="spetial">
+                            {% if kmp.specialcolumn %}
+                            <span class="spp">{{kmp.specialcolumn}}</span>
+                            {% endif %}
+                          </div>
+                          {% if kmp.image %}
+                          <img src="{{ kmp.image.url }}" alt="" class="prdimg">
+                          {% endif %}
+                      </a>
+                  </div>
+                  <div class="prddisctwo">
+                      <div class="prdname">
+                          <a href="#" class="prdhref">
+                              <span class="spp"> {{ kmp.names }}  </span>
+                          </a>
+                          <a href="{% url 'post' kmp.slug %} " class="review" >
+                              <span class="rewiewinline">
+                                  <img src=" {% static "mayin/img/zv.png" %}" alt="" width="12px" height="12px">
+                                  <span>   {{kmp.popularity}}  </span>
+                              </span>
+                          </a>
+                      </div>
+                      <div class="workdata">
+                          <div class="mintime"></div>
+                          <div class="worktime">
+                              <p>  {{ kmp.startwork }} - {{kmp.stopwork}} </p>
+                          </div>
+                      </div>
+                  </div>
+              </article>
+            </div>
+            {% endfor %}
+        </div>
+    </article>
+</div>
+
+{% endblock maayin %}
+
+{% block foutr %}
+{% include "mayin/taghtml/foutur.html" %}
+{% endblock foutr %}
+

@@ -1,0 +1,27 @@
+{% load menucat %}
+
+
+<aside class="asid">
+    <nav class="navmenu" >
+        <ul class="menuctg">
+        {% tag_ctg as categories %}
+        {% for category in categories %}
+        <li class="ctgsel">
+            <a href="{% url 'company' category.slug %}" class="ctghref" >
+                <span class="sp">
+                    {% if category.image %}
+                        <img src="{{ category.image.url }}" alt="" class="ctglogo">
+                    {% endif %}
+                </span>
+                <span class="sp">
+                    <p>{{category.names}}</p>
+                </span>
+            </a>
+          </li>
+
+        {% endfor %}
+
+        </ul>       
+    </nav>
+{% comment %}  այստեղ կարեղ է լինել նոր նավիգացիա    {% endcomment %}
+</aside>

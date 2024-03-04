@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load i18n %} 
+    {% load static %}
+    {% block title %} 
+    {% endblock title %}
+
+    <link rel="stylesheet" href="{% static '/mayin/css/reset.css' %}" />
+    {% block css %}
+    {% endblock css %}
+
+    <link rel="stylesheet" href="{% static '/mayin/css/style.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="{% url 'home' %}">
+          <img src="{% static "mayin/img/logo.avif" %}" alt="6tjtyj" class="img-logo" />
+        </a>
+      </div>
+
+      {% include "location/head_location.html" %}
+      
+      <div class="useraction">
+
+        
+        {% block registration %}
+        
+        {% endblock registration %}
+
+        <button class="basket , map-click">
+          <img src="{% static "mayin/img/basket.jpg" %}" alt="76ujytj" class="img-buton" />
+          <p>{% trans 'Զամբյուղ' %}</p>
+        </button>
+        <div class="pos-relative">
+          <button class="leng" id="ln-select">
+            <p>{% trans 'ՀՅ' %}</p>
+          </button>
+          <ul class="lengnav" id="ln-menu">
+            <li id="lg-one"></li>
+            <li id="lg-two"></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="mayin">
+
+    {% block maayin %}
+    {% endblock maayin %}
+
+    </main>
+
+
+    <footer class="fotr">
+      {% block foutr %}
+      {% endblock foutr %}
+    </footer>
+
+    <script src="{% static '/mayin/js/header.js' %}"></script>
+  </body>
+</html>
+
+
+
+
