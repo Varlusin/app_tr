@@ -1,8 +1,6 @@
 services:
   database:
     image: postgis/postgis
-    volumes:
-      - ./pg_data:/var/lib/postgresql/data 
     environment:
       - POSTGRES_DB=dbname
       - POSTGRES_USER=dbuser
