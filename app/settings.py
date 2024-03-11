@@ -92,17 +92,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 
 
+# DATABASES = {
+#     'default': {
+#         "ENGINE": "django.contrib.gis.db.backends.postgis",
+#         'NAME': 'app',
+#         'USER': 'djangoapp',
+#         'PASSWORD': 'yourpass',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        'NAME': 'app',
-        'USER': 'djangoapp',
-        'PASSWORD': 'yourpass',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'HOST': os.environ.get('DB_HOST'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS')
     }
 }
-
 
 
 
