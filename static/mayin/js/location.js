@@ -1,7 +1,34 @@
 const openLocBut = document.querySelector("#openMap");
 const closeLocBut = document.querySelector("#closeMap");
 const locContainer = document.querySelector("#loccont");
+const formAdres = document.querySelector('#formadres')
 var mymap;
+
+function mm(e){
+  console.log(e)
+}
+
+function mymarker(marker,lat, lon){
+  if (marker){
+    mymap.removeLayer(marker);
+  }
+  marker = new L.marker([lat, lon]).addTo(mymap);
+  fetch(`/location/?latitude=${lat}&longitude=${lon}`, {
+    headers: {
+        Accept: "application.json",
+        "X-Reguested-With": "XMLHttpRequest",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        formAdres.value = `${data.sity} ${data.street} ${data.adres}`
+      });
+      return marker
+}
+
 
 function openLocationCont() {
   locContainer.style.cssText = "display: block;";
@@ -23,35 +50,43 @@ function openLocationCont() {
       layers: [stadiaMaps],
     });
 
-    L.easyButton(
-      '<img src="https://source.unsplash.com/random/200x200?sig=1">',
-      function (btn, map) {
-        alert("johvjhf");
-      }
-    ).addTo(mymap);
-
     var marker;
 
     mymap.on("click", (event) => {
-      if (marker) {
-        mymap.removeLayer(marker);
-      }
       let lat = event.latlng.lat;
-      let lng = event.latlng.lng;
-      marker = new L.marker([lat, lng]).addTo(mymap);
-      fetch(`/location/?latitude=${lat}&longitude=${lng}`, {
-        headers: {
-          Accept: "application.json",
-          "X-Reguested-With": "XMLHttpRequest",
-        },
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-        });
+      let lon = event.latlng.lng;
+      (e)=>mm(e)
+      marker =  mymarker(marker,lat, lon)
     });
+
+    L.easyButton(
+      '<img src="https://source.unsplash.com/random/200x200?sig=1">',
+      function () {
+        const options = {
+          enableHighAccuracy: true,
+          timeout: 300000,
+          maximumAge: 0,
+        };
+      
+        function success(pos) {
+            const lat = pos.coords.latitude
+            const lon = pos.coords.longitude
+            marker =  mymarker(marker,lat, lon)
+            mymap.flyTo([lat, lon], 15, {
+              animate: true,
+              duration: 2 // in seconds
+            });
+        }
+      
+        function error(err) {
+          console.warn(`ERROR(${err.code}): ${err.message}`);
+        }
+      
+        navigator.geolocation.getCurrentPosition(success, error, options);
+      }
+    ).addTo(mymap);
+
+
   }
 }
 

@@ -3,7 +3,6 @@ from django.contrib.gis.db import models as gismodels
 from django.contrib.postgres.indexes import GinIndex
 from django.utils.translation import gettext as _
 
-
 class locationAvailable(gismodels.Model):
     """այն քաղաքներն են որտեղ հասանելի է ծառայությունը։ 
     sity։քաղաքի անվանումը, location multypolygon քաղաքի մակերեսը։ """
@@ -66,3 +65,25 @@ class Building(gismodels.Model):
 
     def __str__(self):
         return self.adres
+
+
+
+class search_model(models.Model):
+    txt = models.TextField(max_length = 300, db_index = True)
+    sity = models.ForeignKey(to=locationAvailable,
+                             on_delete=models.PROTECT, 
+                             related_name = 'src')
+    
+    stret = models.ForeignKey(to=Street,
+                             on_delete=models.PROTECT, 
+                             related_name = 'src')
+    
+    class Mete:
+        indexes=[
+            GinIndex(name = 'NewGinIndex',fields=['txt'])
+        ]
+        varbose_name = _('որոնման տվըալ')
+        varbose_name_plural = _('որոնման տվյալներ')
+
+    def __str__(self):
+        return self.txt

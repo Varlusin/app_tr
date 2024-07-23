@@ -18,7 +18,7 @@
     <header class="header">
       <div class="logo">
         <a href="{% url 'home' %}">
-          <img src="{% static "mayin/img/logo.avif" %}" alt="6tjtyj" class="img-logo" />
+          <img src="{% static "mayin/img/logo.svg" %}" alt="6tjtyj" class="img-logo" />
         </a>
       </div>
 
@@ -26,24 +26,25 @@
       
       <div class="useraction">
 
-        
+        {% comment %} this is a registration lincs
         {% block registration %}
         
         {% endblock registration %}
+        {% endcomment %}
 
-        <button class="basket , map-click">
-          <img src="{% static "mayin/img/basket.jpg" %}" alt="76ujytj" class="img-buton" />
-          <p>{% trans 'Զամբյուղ' %}</p>
-        </button>
         <div class="pos-relative">
-          <button class="leng" id="ln-select">
-            <p>{% trans 'ՀՅ' %}</p>
-          </button>
+          <button class="head_button" id="ln-select"><p>{% trans 'ՀՅ' %}</p></button>
           <ul class="lengnav" id="ln-menu">
             <li id="lg-one"></li>
             <li id="lg-two"></li>
           </ul>
         </div>
+        <button class="head_button">
+          <img src="{% static "mayin/img/user_icon.svg" %}" alt="76ujytj" class="img-buton" />
+        </button>
+        <button class="head_button">
+          <img src="{% static "mayin/img/basket.svg" %}" alt="76ujytj" class="img-buton" />
+        </button>
       </div>
     </header>
 
@@ -63,6 +64,9 @@
     <script src="{% static '/mayin/js/header.js' %}"></script>
   </body>
 </html>
+
+
+
 
 
 

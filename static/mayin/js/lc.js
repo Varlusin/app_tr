@@ -42,23 +42,23 @@ closeMap.addEventListener("click", function () {
 
 
 
-// getLocation.addEventListener("click", function () {
-//     const options = {
-//       enableHighAccuracy: true,
-//       timeout: 10000,
-//       maximumAge: 0,
-//     };
+getLocation.addEventListener("click", function () {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 0,
+    };
   
-//     function success(pos) {
-//         const crd = pos.coords;
-//             // mymap.remove();
-//             // createMap((latitude = crd.latitude), (longitude = crd.longitude), (zom = 17));
-//             L.marker([crd.latitude, crd.longitude]).addTo(mymap);    
-//     }
+    function success(pos) {
+        const crd = pos.coords;
+            // mymap.remove();
+            // createMap((latitude = crd.latitude), (longitude = crd.longitude), (zom = 17));
+            L.marker([crd.latitude, crd.longitude]).addTo(mymap);    
+    }
   
-//     function error(err) {
-//       console.warn(`ERROR(${err.code}): ${err.message}`);
-//     }
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
   
-//     navigator.geolocation.getCurrentPosition(success, error, options);
-//   });
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  });
