@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.utils.translation import get_language
 from django.utils.translation import gettext as _
 
-from .utils import find_location
+from location.utils import find_location
 from location.models import CustomerAddresses
 
 from django.db import connection
