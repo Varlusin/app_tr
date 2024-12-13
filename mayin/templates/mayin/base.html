@@ -3,71 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% load i18n %} 
-    {% load static %}
-    {% block title %} 
-    {% endblock title %}
-
+    {% load i18n %} {% load static %} {% block title %} {% endblock title %}
     <link rel="stylesheet" href="{% static '/mayin/css/reset.css' %}" />
-    {% block css %}
-    {% endblock css %}
-
     <link rel="stylesheet" href="{% static '/mayin/css/style.css' %}" />
+    {% block css %} {% endblock css %}
   </head>
+
   <body>
     <header class="header">
-      <div class="logo">
-        <a href="{% url 'home' %}">
-          <img src="{% static "mayin/img/logo.svg" %}" alt="6tjtyj" class="img-logo" />
-        </a>
-      </div>
+      <div class="container">
+        <div class="heder__top">
+          <!--  -->
+          <a href="{% url 'home' %}" class="logo">
+            <img class="logo__img" src="{% static "mayin/img/logo.svg" %}"
+            alt="">
+          </a>
 
-      {% include "location/head_location.html" %}
-      
-      <div class="useraction">
-
-        {% comment %} this is a registration lincs
-        {% block registration %}
-        
-        {% endblock registration %}
-        {% endcomment %}
-
-        <div class="pos-relative">
-          <button class="head_button" id="ln-select"><p>{% trans 'ՀՅ' %}</p></button>
-          <ul class="lengnav" id="ln-menu">
-            <li id="lg-one"></li>
-            <li id="lg-two"></li>
+          
+          {% include "location/head_location.html" %}
+          <ul class="user__actions">
+            {% block registration %} {% endblock registration %}
+            <li>
+              <!-- lenguage menu -->
+              <div class="button_menu_container">
+                <button class="user__actions__bnt" id="ln_bnt">
+                  <p>ՀՅ</p>
+                </button>
+                <!-- lenguage window -->
+                <ul class="lenguage_container" id="lenguage_menu">
+                  <li>
+                    <button class="select_lenguage">
+                      <img src="{% static "mayin/img/arm_flag.svg" %}" alt="">
+                      <p>ՀՅ</p>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="select_lenguage">
+                      <img src="{% static "mayin/img/rus_flag.svg" %}" alt="">
+                      <p>РУ</p>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="select_lenguage">
+                      <img src="{% static "mayin/img/usa_flag.svg" %}" alt="">
+                      <p>EN</p>
+                    </button>
+                  </li>
+                </ul>
+                <!-- end lenguage menu -->
+              </div>
+            </li>
+            <li>
+              <button class="user__actions__bnt" id="basket_bnt">
+                <img src="{% static "mayin/img/basket.svg" %}" alt="">
+              </button>
+            </li>
           </ul>
         </div>
-        <button class="head_button">
-          <img src="{% static "mayin/img/user_icon.svg" %}" alt="76ujytj" class="img-buton" />
-        </button>
-        <button class="head_button">
-          <img src="{% static "mayin/img/basket.svg" %}" alt="76ujytj" class="img-buton" />
-        </button>
       </div>
     </header>
 
-    <main class="mayin">
+    <main class="mayin">{% block maayin %} {% endblock maayin %}</main>
 
-    {% block maayin %}
-    {% endblock maayin %}
+    <footer class="fotr">{% block foutr %} {% endblock foutr %}</footer>
 
-    </main>
-
-
-    <footer class="fotr">
-      {% block foutr %}
-      {% endblock foutr %}
-    </footer>
-
+    {% block map %} {% endblock map %} {% comment %}
     <script src="{% static '/mayin/js/header.js' %}"></script>
+    {% endcomment %}
+    <script src="{% static '/mayin/js/exemple.js' %}"></script>
+    {% comment %}
+    <script src="{% static '/location/js/location.js' %}"></script>
+    {% endcomment %}
   </body>
 </html>
-
-
-
-
-
-
-

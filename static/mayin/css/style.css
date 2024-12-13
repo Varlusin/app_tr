@@ -1,117 +1,219 @@
-/* header */
 .header {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background-color: var(--head_backg_color);
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
   left: auto;
   right: 0;
-  position: sticky;
-  width: 100%;
+  background-color: var(--bg_col_3);
+  min-width: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1840px;
+  padding: 0px 15px;
+  margin: 0 auto;
+}
+
+
+.heder__top {
   display: flex;
-  box-sizing: border-box;
-  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  justify-content: space-between;
-
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-}
-
-/* logo */
-/* .img-logo {
-  width: 80px;
-  height: 60px;
-} */
-
-.logo {
-  justify-content: space-between;
-  padding-left: 20px;
-}
-
-/* location */
-
-.search {
-  display: flex;
+  padding: 10px 0px;
+  margin: 0 auto;
   align-items: center;
+
 }
 
-/* .img-buton {
-  width: 30px;
-  height: 30px;
-} */
+.logo__img{
+  height: var(--heder_higth);
+}
 
-.src-loc {
+/*  */
+
+.heder__search__location {
   display: flex;
-  align-items: center;
-}
-
-.map-click {
-  display: flex;
-  align-items: center;
-}
-
-/* butons for header right */
-
-.basket,
-.singin,
-.registration,
-.log-out {
-  padding-right: 15px;
-}
-
-.useraction {
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  padding-right: 20px;
-  align-items: inherit;
-}
-
-.pos-relative {
-  position: relative;
-}
-
-.leng {
-  border: 1px solid rgb(231, 30, 76);
-  display: flex;
-  padding-left: 9px;
-  padding-right: 9px;
-  text-transform: uppercase;
   justify-content: space-between;
-  background-color: #fff;
+  align-items: center;
+  min-width: 40%;
 }
 
-.lengnav {
-  color: #424242;
+.search__wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 100%;
+  
+}
+
+
+.search__location{
   width: 100%;
-  opacity: 0;
-  z-index: 10;
+}
+
+
+.heder__form__location {
+  width: 100%;
+  height: var(--heder_higth);
+  background: #FFFFFFFF;
+  display: inline-flex;
+  align-items: center;
+  border-top: 3px  solid var(--buton_col_3);
+  border-bottom: 3px  solid var(--buton_col_3);
+  border-left: 3px  solid var(--buton_col_3);
+  border-radius: var(--border_radius_1) 0 0 var(--border_radius_1);
+
+  >img {
+      height: 60%;
+      padding: 0 2%;
+  }
+}
+
+
+.heder__location__search {
+
+  background: transparent;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.search__rezult{
+  display: none;
+  min-width: 100%;
   position: absolute;
-  transition: all 0.1s ease;
-  visibility: hidden;
-  border-left: 1px solid rgb(231, 30, 76);
-  border-right: 1px solid rgb(231, 30, 76);
-  border-bottom: 1px solid rgb(231, 30, 76);
-  background-color: #fff;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  background-color: #FFF3DA;
+  margin-top: 10px;
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.698);
+  z-index: 3;
+
 }
 
-/* box-show koxqic kerkum e  */
+
+.heder__location__button {
+  align-items: center;
+  background-color: var(--buton_col_3);
+  height: var(--heder_higth);
+  width: calc(var(--heder_higth)* 1.1);
+  border-radius: 0 var(--border_radius_1) var(--border_radius_1) 0;
+
+  >img {
+      height: 60%;
+  }
+}
+
+.heder__location__button:hover {
+  background-color: var(--buton_col_4);
+}
+
+.heder__location__button:active {
+  background-color: var(--buton_col_4)
+}
 
 
-.head_button {
-  height: 61px;
-  width: 61px;
+
+
+/*  */
+.user__actions {
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+}
+
+.user__actions__bnt {
+  background-color: var(--buton_col_3);
+  height: var(--heder_higth);
+  width: var(--heder_higth);
+  cursor: pointer;
+  border: none;
   border-radius: 50%;
-  background-color: var(--buton_bg_color);
+
+  >img {
+      width: 70%;
+  }
+}
+
+.user__actions__bnt:hover {
+  background-color: var(--buton_col_4);
+}
+
+.user__actions__bnt:active {
+  background-color: var(--buton_col_4)
+}
+
+.position__relative{
+  position: relative;
+  width: 100%;
+}
+
+.username{
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  font-size: 100%;
+  color: #FFFFFFFF;
+}
+
+.profil_content {
+  display: none;
+  position: absolute;
+  background-color: #FFF3DA;
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.lenguage_container {
+  display: none;
+  position: absolute;
+  background-color: #FFF3DA;
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.prf__set,
+.select_lenguage {
+  height: 40px;
+  display: inline-flex;
+  gap: 0 5px;
+  align-items: center;
+  padding: 0px 15px;
+
+  >img {
+      height: 70%;
+  }
+}
+
+
+
+/*  */
+
+.menu__btn {
+  width: 70px;
+  height: 23px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu__btn span {
+  background-color: #FF5017;
+  width: 100%;
+  height: 3px;
 
 }
 
-.head_button:hover {background-color: var(--buton_bg_hover_color)}
 
+@media (max-width: 1200px) {
+  .heder__search__location {
+
+      min-width: 70%;
+  }
+
+}
+
+
+@media (max-width: 760px) {
+
+
+}

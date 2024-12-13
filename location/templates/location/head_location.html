@@ -1,12 +1,27 @@
-{% load i18n %}
-{% load static %}
-<search class="search">
-    <form action="" class="src-loc">
-      <input type="text" class="inp-loc" id="SrcLocHead"  placeholder="{% trans 'Ձեր հասցեն' %}" />
-    </form>
-      <button class="map-click" id = "openMap">
-        <img src="{% static "mayin/img/loc_icon.svg" %}" alt="76ujytj"
-        class="img-buton" />
-      </button>
-  </search>
-  
+{% load i18n %} {% load static %}
+<div class="heder__search__location">
+  <div class="search__wrap">
+    <div class="position__relative">
+      <search class="search__location">
+        <form action="" class="heder__form__location">
+          <img class="search-pic" src="{% static "mayin/img/search_icon.svg" %}" />
+            <input
+              type="search"
+              id="SrcLocHead"
+              class="heder__location__search"
+              name="q"
+              placeholder="{% trans 'մութքագրեք ձեր հասցեն'%}"
+            />
+        </form>
+      </search>
+         <ul id="src_rez" class="search__rezult">
+        </ul> 
+    </div>
+    <button class="heder__location__button" id="openMap">
+      <img src= "{% static "mayin/img/loc_icon.svg" %}" alt="">
+    </button>
+  </div>
+</div>
+
+
+

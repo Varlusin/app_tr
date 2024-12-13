@@ -3,20 +3,47 @@
 
 <link rel="stylesheet" href="{% static '/location/css/location.css' %}">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-<script src="{% static '/location/js/easy-button.js' %}" ></script>
+<div id="loccont" class="map_wrap">
+  <div class="map_container">
+    <div class="map_container_1">
+      <button class="close_map" id="closeMap">
+        <img src="{% static "./mayin/img/close.svg" %}" alt="">
+      </button>
 
-<div id = "loccont" >
-  <search class="search">
-    <form action="" class="src-loc">
-      <input type="text" class="inp-loc" name = "q" id = "formadres" placeholder="{% trans 'Ձեր հասցեն' %}" />
-    </form>
-  </search>
+      <div class="map__search__location">
+        <div class="map__src__form">
+          <div class="position__relative">
+            <search class="search__location__map">
+              <form action="" class="map__form__location">
+                <img class="search-pic" src="{% static "./mayin/img/search_icon.svg" %}" />
+                <input 
+                type="search" 
+                id="mapInputFormAdres" 
+                class="map__location__search" 
+                name="q"
+                placeholder="մութքագրեք ձեր հասցեն" 
+                />
+              </form>
+              <ul id="map_src_rez" class="map__search__rezult"></ul>
+            </search>
+          </div>
+        </div>
 
-  <button class="closemap" id = "closeMap">
-      <p>{% trans 'close' %}</p>
-  </button>
-  <div id="map"></div>
+        <button id="loc_confirm" class="map_confirm_location">
+          <p>ՀԱՍՏԱՏԵԼ</p>
+        </button>
+
+      </div>
+      <div class="ma_margin">
+        <div id="map" class="map"></div>
+        {% comment %} <button class="get_gps" id="get_gps">
+          <img src="{% static "./mayin/img/gps_icon.svg" %} " alt="">
+        </button> {% endcomment %}
+      </div>
+    </div>
+  </div>
 </div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="{% static '/location/js/easy-button.js' %}" ></script>
 <script src="{% static '/location/js/location.js' %}"></script>

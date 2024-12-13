@@ -2,96 +2,121 @@
 {% load static %} 
 {% load i18n %} 
 {% block title%}
-<title>{{ title }}</title>
-{% endblock title %}
+<title> {{title}} </title>
+{% endblock title %} 
 
 {% block css %}
 <link rel="stylesheet" href="{% static '/mayin/css/cont.css' %}" />
-{% endblock css %}
+{% endblock css %} 
 
-
-{% block registration %}
-
+{% block registration %} 
 {%if user.is_authenticated %}
-<button class="log-out">
-  <a href="{% url 'log-out' %}">
-    <p>{% trans 'Դուրս գալ' %}</p>
-  </a>
-</button>
-<div class="user-name">
-  <p>{{user.first_name }}</p>
-</div>
+<li>
+  <div class="button_menu_container">
+    <div class="position__relative">
+      <button class="user__actions__bnt" id="profile_bnt">
+        <p class="username">{{user.first_name }}</p>
+        <img src="{% static "mayin/img/user_icon.svg" %}" alt="">
+      </button>
+    </div>
+    <ul class="profil_content" id="profile_menu">
+      <li>
+        <a class="prf__set" href="{% url 'log-out' %}">
+          <img src="{% static "mayin/img/logout.svg" %}" alt="">
+          <p>{% trans 'Դուրս գալ' %}</p>
+        </a>
+      </li>
+      <li>
+        <a class="prf__set" href="#">
+          <img src="{% static "mayin/img/change.svg" %}" alt="">
+          <p>{% trans 'փոփոխել' %}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>
 {% else %}
-<button class="singin">
-  <a href="{% url 'singin' %}">
-    <p>{% trans 'Մուտք' %}</p>
-  </a>
-</button>
-<button class="registration">
-  <a href="{% url 'register' %}">
-    <p>{% trans 'Գրանցվել' %}</p>
-  </a>
-</button>
-{% endif %}
-      
-{% endblock registration %}
+<li>
+  <div class="button_menu_container">
+      <button class="user__actions__bnt" id="profile_bnt">
+        <img src="{% static "mayin/img/user_icon.svg" %}" alt="">
+      </button>
+    <ul class="profil_content" id="profile_menu">
+      <li>
+        <a class="prf__set" href="{% url 'singin' %}">
+          <img src="{% static "mayin/img/login.svg" %}" alt="">
+          <p>{% trans 'Մուտք' %}</p>
+        </a>
+      </li>
+      <li>
+        <a class="prf__set" href="{% url 'register' %}">
+          <img src="{% static "mayin/img/registration.svg" %}" alt="">
+          <p>{% trans 'Գրանցվել' %}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>
+{% endif %} 
+{% endblock registration %} 
 
 
 
-
-{% block maayin %}
-
-{% include "location/location.html" %}
-
+{% block maayin %} 
 <div class="mayindisploy">
-    {% include "mayin/taghtml/catmen.html" %}
-
-    <article class="wrip">
-        <div class="showbox">
-            {% for kmp in grup %}
-            <div class="card">
-              <article class="prdart">
-                  <div class="prddiscone" >
-                      <a href=" {%url 'Companyvews'  kmp.slug kmp.id %} " class="prdhref">
-                          <div class="spetial">
-                            {% if kmp.specialcolumn %}
-                            <span class="spp">{{kmp.specialcolumn}}</span>
-                            {% endif %}
-                          </div>
-                          {% if kmp.image %}
-                          <img src="{{ kmp.image.url }}" alt="" class="prdimg">
-                          {% endif %}
-                      </a>
-                  </div>
-                  <div class="prddisctwo">
-                      <div class="prdname">
-                          <a href="#" class="prdhref">
-                              <span class="spp"> {{ kmp.names }}  </span>
-                          </a>
-                          <a href="{% url 'post' kmp.slug %} " class="review" >
-                              <span class="rewiewinline">
-                                  <img src=" {% static "mayin/img/zv.png" %}" alt="" width="12px" height="12px">
-                                  <span>   {{kmp.popularity}}  </span>
-                              </span>
-                          </a>
-                      </div>
-                      <div class="workdata">
-                          <div class="mintime"></div>
-                          <div class="worktime">
-                              <p>  {{ kmp.startwork }} - {{kmp.stopwork}} </p>
-                          </div>
-                      </div>
-                  </div>
-              </article>
+  {% include "mayin/taghtml/catmen.html" %}
+  <article class="wrip">
+    <div class="showbox">
+      {% for kmp in grup %}
+      <div class="card">
+        <article class="prdart">
+          <div class="prddiscone">
+            <a href=" {%url 'Companyvews'  kmp.slug kmp.id %} " class="prdhref">
+              <div class="spetial">
+                {% if kmp.specialcolumn %}
+                <span class="spp">{{kmp.specialcolumn}}</span>
+                {% endif %}
+              </div>
+              {% if kmp.image %}
+              <img src="{{ kmp.image.url }}" alt="" class="prdimg" />
+              {% endif %}
+            </a>
+          </div>
+          <div class="prddisctwo">
+            <div class="prdname">
+              <a href="#" class="prdhref">
+                <span class="spp"> {{ kmp.names }} </span>
+              </a>
+              <a href="{% url 'post' kmp.slug %} " class="review">
+                <span class="rewiewinline">
+                  <img src=" {% static "mayin/img/zv.png" %}" alt=""
+                  width="12px" height="12px">
+                  <span> {{kmp.popularity}} </span>
+                </span>
+              </a>
             </div>
-            {% endfor %}
-        </div>
-    </article>
+            <div class="workdata">
+              <div class="mintime"></div>
+              <div class="worktime">
+                <p>{{ kmp.startwork }} - {{kmp.stopwork}}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+  </article>
 </div>
 
-{% endblock maayin %}
+{% endblock maayin %} 
 
-{% block foutr %}
-{% include "mayin/taghtml/foutur.html" %}
+
+{% block foutr %} 
+{% include "mayin/taghtml/foutur.html" %} 
 {% endblock foutr %}
 
+
+{% block map %}
+{% include "location/location.html" %}
+{% endblock map %}

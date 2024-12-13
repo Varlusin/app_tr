@@ -45,7 +45,7 @@ p {
   line-height: inherit;
 }
 
-p + p {
+p+p {
   margin-top: 1em;
 }
 
@@ -76,7 +76,6 @@ button,
 input[type="submit"] {
   display: inline-block;
   box-shadow: none;
-  background-color: transparent;
   background: none;
   cursor: pointer;
 }
@@ -102,17 +101,18 @@ legend {
 }
 
 body {
-  background-color: var(--backg_color);
+  background-color: var(--bg_col_1);
 }
 
-
-
-
 :root {
-  --backg_color: rgba(225, 239, 226, 1);
-  --bg_color_1: rgba(255, 243, 218, 1);
-  --head_backg_color: rgba(255, 185, 40, 1);
-  --buton_bg_color: rgba(85, 174, 104, 1);
-  --buton_bg_hover_color: rgb(36, 201, 75);
+  --bg_col_1: rgba(225, 239, 226, 1);
+  --bg_col_2: rgba(255, 243, 218, 1);
+  --bg_col_3: rgba(255, 185, 40, 1);
+  --buton_col_1: rgba(85, 174, 104, 1);
+  --buton_col_2: rgb(36, 201, 75);
+  --buton_col_3: #00A082FF;
+  --buton_col_4: #00846BFF;
   --border_color_1: rgb(61, 72, 73);
+  --heder_higth: 40px;
+  --border_radius_1: calc(var(--heder_higth)*0.5);
 }

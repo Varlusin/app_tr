@@ -2,12 +2,14 @@ from django.db import models
 from django.contrib.gis.db import models as gismodels
 from django.contrib.postgres.indexes import GinIndex
 from django.utils.translation import gettext as _
+from datetime import datetime
+from users.models import CustomUser
 
 class locationAvailable(gismodels.Model):
     """այն քաղաքներն են որտեղ հասանելի է ծառայությունը։ 
-    sity։քաղաքի անվանումը, location multypolygon քաղաքի մակերեսը։ """
+    sity։քաղաքի անվանումը, geometry multypolygon քաղաքի մակերեսը։ """
     sity = models.CharField(max_length = 50 , db_index = True)
-    location=gismodels.MultiPolygonField()
+    geometry=gismodels.MultiPolygonField()
     objects = gismodels.Manager()
 
     class Mete:
@@ -28,7 +30,7 @@ class Street(gismodels.Model):
     sity = models.ForeignKey(to=locationAvailable,
                              on_delete=models.PROTECT, 
                              related_name = 'street')
-    name = models.CharField(max_length = 200, db_index = True)
+    name = models.CharField(max_length = 200, blank=True, null=True,  db_index = True)
     geometry = gismodels.MultiLineStringField( blank=True, null=True)
 
     class Mete:
@@ -52,38 +54,45 @@ class Building(gismodels.Model):
     stret = models.ForeignKey(to=Street,
                              on_delete=models.PROTECT, 
                              related_name = 'buildings')
-    adres = models.CharField(max_length = 70, db_index = True)
+    adres = models.CharField(max_length = 70, blank=True, null = True, db_index = True)
+    district = models.FloatField(blank=True, null=True)
     center_point = gismodels.PointField()
     geometry=gismodels.PolygonField()
 
     class Mete:
-        indexes=[
-            GinIndex(name = 'NewGinIndex',fields=['adres'])
-        ]
+        # indexes=[
+        #     GinIndex(name = 'NewGinIndex',fields=['adres'])
+        # ]
         varbose_name = _('Շինություն')
         varbose_name_plural = _('Շինություններ')
 
     def __str__(self):
         return self.adres
 
-
-
-class search_model(models.Model):
-    txt = models.TextField(max_length = 300, db_index = True)
-    sity = models.ForeignKey(to=locationAvailable,
-                             on_delete=models.PROTECT, 
-                             related_name = 'src')
+class CustomerAddresses(gismodels.Model):
+    """ 
+    useri կատարած պատվերների հասցեներն է:
+    custumer -> user id:
+    building -> եթե հասցեն հայտնի է building աղյուսակում building ֊ի id֊ն եթե ոչ դատարկ արժեք:
+    date -> հասցեն ընտրելու ժամանակն է։
+    adres -> հասցեի անվանումն է: 
+    geometry -> պատվերի հասցեի կորդինատները:  
+    """
+    custumer= models.ForeignKey(to=CustomUser,
+                                on_delete=models.PROTECT, 
+                                related_name = 'order_adres')
+    building = models.BigIntegerField(blank=True, null=True,)
+    adres = models.CharField(max_length=70, blank=True, null=True)
+    createOrUpdateDate = models.DateTimeField(default=datetime.now, blank=True) #auto_now_add = True)
+    geometry = gismodels.PointField(blank=True, null = True, srid=4326)  
     
-    stret = models.ForeignKey(to=Street,
-                             on_delete=models.PROTECT, 
-                             related_name = 'src')
-    
+    def save(self, *args,  **kwargs):
+        self.createOrUpdateDate = datetime.now()
+        super().save(*args, **kwargs)
+
     class Mete:
-        indexes=[
-            GinIndex(name = 'NewGinIndex',fields=['txt'])
-        ]
-        varbose_name = _('որոնման տվըալ')
-        varbose_name_plural = _('որոնման տվյալներ')
-
-    def __str__(self):
-        return self.txt
+        varbose_name = _('Պատվիրված հասցե')
+        varbose_name_plural = _('Պատվիրված հասցեններ')
+    
+    # def __str__(self) -> str:
+    #     return self.adres

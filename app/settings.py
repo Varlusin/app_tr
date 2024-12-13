@@ -12,8 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+c6v+b%n#bqi93=nf359n0i0ox!0qzxi6#69!2t6f4*r=p9t)$'
 
 DEBUG = True
-
-ALLOWED_HOSTS = ['192.168.5.14']
+ALLOWED_HOSTS = ['192.168.5.14', '192.168.5.23', '127.0.0.1', '192.168.5.25']
 
 
 
@@ -162,6 +161,7 @@ AUTH_USER_MODEL = "users.CustomUser"
 INTERNAL_IPS = [
     # ...
     "192.168.5.14",
+    "192.168.5.25",
     # ...
 ]
 

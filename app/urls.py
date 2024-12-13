@@ -23,7 +23,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
 urlpatterns = [
-    *i18n_patterns(*urlpatterns, prefix_default_language=False),
+    *i18n_patterns(*urlpatterns, prefix_default_language=True),
     ]
 
 
